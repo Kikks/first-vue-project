@@ -1,17 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>My name is {{ name }}</h1>
+  <p>My hobbies are: {{ hobbies.join(", ") }}</p>
+  <input
+    type="text"
+    class="input"
+    v-bind:class="error && 'input--error'"
+    v-bind:value="textInput"
+  />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data() {
+    return {
+      name: "Kikks",
+      hobbies: ["Codeing", "Reading", "Gaming"],
+      textInput: "This is supposed to be the default text.",
+      error: true,
+    };
+  },
+};
 </script>
 
 <style>
@@ -22,5 +31,28 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.input {
+  width: 20rem;
+  padding: 1rem;
+  border: #8beaa4 solid 0.1rem;
+  border-radius: 0.5rem;
+  font: inherit;
+  transition: all 0.1s;
+}
+
+.input:focus {
+  outline: #3bb75e solid 0.17rem;
+  outline-offset: 0.1rem;
+}
+
+.input--error {
+  border: #eb7b7b solid 0.1rem;
+}
+
+.input--error:focus {
+  outline: #d34343 solid 0.17rem;
+  outline-offset: 0.1rem;
 }
 </style>
